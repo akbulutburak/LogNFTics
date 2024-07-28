@@ -1,4 +1,4 @@
-# LogNFTics
+
 
 # LogNFTics Akıllı Sözleşmesi
 
