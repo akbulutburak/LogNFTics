@@ -30,6 +30,8 @@ struct Shipment {
     string additionalInfo;// Ek Bilgi
 }
 
+## Fonksiyonlar
+
 
 
 
