@@ -18,7 +18,7 @@ https://sepolia.scrollscan.com/address/0xb8146569b661676a72ea0e6c3cad065b6a52861
 
 *Yaratıcı adresi:0x2A98F7CBb27f38ff5dAa62D83CE43a7ECe81c3CB *
 
-*Veri Yapıları*
+##eri Yapıları
 
 struct Shipment {
     uint256 id;  // Gönderi Kimliği
@@ -33,32 +33,33 @@ struct Shipment {
     string additionalInfo;  // Ek Bilgi
 }
 
-*Fonksiyonlar*
+###Fonksiyonlar
 createShipment(string memory _origin, string memory _destination, string memory _sender, string memory _receiver, uint256 _weight, string memory _dimensions, string memory 
-_additionalInfo): Yeni bir gönderi oluşturur ve NFT olarak mint eder.
+_additionalInfo): ###Yeni bir gönderi oluşturur ve NFT olarak mint eder.
 
-updateShipmentStatus(uint256 _id, string memory _status): Belirtilen gönderinin durumunu günceller.
+updateShipmentStatus(uint256 _id, string memory _status): ###Belirtilen gönderinin durumunu günceller.
 
-updateShipmentDetails(uint256 _id, string memory _sender, string memory _receiver, uint256 _weight, string memory _dimensions, string memory _additionalInfo): Belirtilen gönderinin detaylarını günceller.
+updateShipmentDetails(uint256 _id, string memory _sender, string memory _receiver, uint256 _weight, string memory _dimensions, string memory _additionalInfo): 
+###Belirtilen gönderinin detaylarını günceller.
 
-getShipment(uint256 _id): Belirtilen gönderinin bilgilerini döner.
+getShipment(uint256 _id): ###Belirtilen gönderinin bilgilerini döner.
 
-changeManager(address newManager): Sözleşme sahibini değiştirir.
+changeManager(address newManager): ###Sözleşme sahibini değiştirir.
 
-#Kullanım
-Yeni bir gönderi oluşturmak ve mint etmek için:
+##Kullanım
+###Yeni bir gönderi oluşturmak ve mint etmek için:
 LogNFTics.createShipment("Ankara", "İstanbul", "Gönderici", "Alıcı", 100, "10x10x10", "Ek bilgi");
 
-Gönderi Durumunu Güncelleme
+###Gönderi Durumunu Güncelleme
 LogNFTics.updateShipmentStatus(1, "Yolda");
 
-Gönderi Detaylarını Güncelleme
+###Gönderi Detaylarını Güncelleme
 LogNFTics.updateShipmentDetails(1, "Yeni Gönderici", "Yeni Alıcı", 120, "15x15x15", "Yeni ek bilgi");
 
-Gönderi Bilgilerini Alma
+###Gönderi Bilgilerini Alma
 LogNFTics.getShipment(1);
 
-Yöneticiyi Değiştirme
+###Yöneticiyi Değiştirme
 LogNFTics.changeManager("0xYeniSahipAdres");
 
 
