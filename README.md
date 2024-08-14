@@ -12,8 +12,8 @@ Before you begin, ensure the following requirements are met:
 
 ## Contract Address
 
-- **Sözleşme Adresi**: [[0xb8146569b661676A72Ea0E6c3cAd065b6a52861D](https://sepolia.scrollscan.com/address/0xb8146569b661676a72ea0e6c3cad065b6a52861d)](https://sepolia.scrollscan.com/address/0x50bd0fd6ca70d4c887f0783ac8e83a66ca53b609)
-- **Yaratıcı Adresi**: 0x2A98F7CBb27f38ff5dAa62D83CE43a7ECe81c3CB
+- **Contract Address:**: 0x50Bd0Fd6Ca70D4c887f0783Ac8E83A66Ca53B609 -https://sepolia.scrollscan.com/token/0x50bd0fd6ca70d4c887f0783ac8e83a66ca53b609
+- **Creator Address:**: 0x2A98F7CBb27f38ff5dAa62D83CE43a7ECe81c3CB
 
 ## Data Structures
 
