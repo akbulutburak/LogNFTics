@@ -1,37 +1,36 @@
 
-# LogNFTics Akıllı Sözleşmesi
+# LogNFTX Smart Contract
 
-Bu proje, lojistik yönetimi için NFT'ler (ERC721) kullanarak tasarlanmış bir Solidity akıllı sözleşmesi olan `LogNFTics` içermektedir. Sözleşme, Scroll Sepolia Testnet üzerinde dağıtılmıştır.
 
-## Ön Koşullar
+This project includes a Solidity smart contract called LogNFTics, designed for logistics management using NFTs (ERC721). The contract has been deployed on the Scroll Sepolia Testnet.
 
-Başlamadan önce, aşağıdaki gereksinimlerin karşılandığından emin olun:
+## Prerequisites
 
-- Scroll Sepolia Testnet için yapılandırılmış MetaMask veya başka bir Ethereum cüzdanı
+Before you begin, ensure the following requirements are met:
 
-## Sözleşme Adresi
+-MetaMask or another Ethereum wallet configured for Scroll Sepolia Testnet
 
-- **Sözleşme Adresi**: [0xb8146569b661676A72Ea0E6c3cAd065b6a52861D](https://sepolia.scrollscan.com/address/0xb8146569b661676a72ea0e6c3cad065b6a52861d)
+## Contract Address
+
+- **Sözleşme Adresi**: [[0xb8146569b661676A72Ea0E6c3cAd065b6a52861D](https://sepolia.scrollscan.com/address/0xb8146569b661676a72ea0e6c3cad065b6a52861d)](https://sepolia.scrollscan.com/address/0x50bd0fd6ca70d4c887f0783ac8e83a66ca53b609)
 - **Yaratıcı Adresi**: 0x2A98F7CBb27f38ff5dAa62D83CE43a7ECe81c3CB
 
-## Veri Yapıları
+## Data Structures
 
 ```solidity
-struct Shipment {
-    uint256 id;           // Gönderi Kimliği
-    string origin;        // Gönderinin Kökeni
-    string destination;   // Gönderinin Hedefi
-    string status;        // Gönderinin Durumu
-    uint256 timestamp;    // Zaman Damgası
-    string sender;        // Gönderici
-    string receiver;      // Alıcı
-    uint256 weight;       // Ağırlık
-    string dimensions;    // Boyutlar
-    string additionalInfo;// Ek Bilgi
-}
+uint256 id;               // Shipment ID
+    string origin;        // Origin of the shipment
+    string destination;   // Destination of the shipment
+    string status;        // Status of the shipment
+    uint256 timestamp;    // Timestamp
+    string sender;        // Sender
+    string receiver;      // Receiver
+    uint256 weight;       // Weight
+    string dimensions;    // Dimensions
+    string additionalInfo;// Additional information
 
-Fonksiyonlar
-createShipment: Yeni bir gönderi oluşturur ve NFT olarak mint eder.
+Functions
+createShipment: Creates a new shipment and mints it as an NFT
 function createShipment(
     string memory _origin, 
     string memory _destination, 
@@ -47,7 +46,7 @@ function createShipment(
     emit ShipmentCreated(shipmentCounter, _origin, _destination, block.timestamp, _sender, _receiver, _weight, _dimensions, _additionalInfo);
 }
 
-updateShipmentStatus: Belirtilen gönderinin durumunu günceller.
+updateShipmentStatus: Updates the status of a specified shipment.
 
 function updateShipmentStatus(uint256 _id, string memory _status) public onlyOwner {
     require(shipments[_id].id != 0, "Shipment does not exist");
@@ -56,7 +55,7 @@ function updateShipmentStatus(uint256 _id, string memory _status) public onlyOwn
     emit ShipmentStatusUpdated(_id, _status, block.timestamp);
 }
 
-updateShipmentDetails: Belirtilen gönderinin detaylarını günceller.
+updateShipmentDetails: Updates the details of a specified shipment.
 
 function updateShipmentDetails(
     uint256 _id, 
@@ -75,21 +74,20 @@ function updateShipmentDetails(
     emit ShipmentDetailsUpdated(_id, _sender, _receiver, _weight, _dimensions, _additionalInfo);
 }
 
-getShipment: Belirtilen gönderinin bilgilerini döner.
+getShipment: Returns the information of a specified shipment.
 
 function getShipment(uint256 _id) public view returns (Shipment memory) {
     require(shipments[_id].id != 0, "Shipment does not exist");
     return shipments[_id];
 }
 
-changeManager: Sözleşme sahibini değiştirir.
+changeManager: Changes the owner of the contract..
 function changeManager(address newManager) public onlyOwner {
     transferOwnership(newManager);
 }
-Kullanım
-LogNFTics.createShipment("Ankara", "İstanbul", "Gönderici", "Alıcı", 100, "10x10x10", "Ek bilgi");
-LogNFTics.updateShipmentStatus(1, "Yolda");
-LogNFTics.updateShipmentDetails(1, "Yeni Gönderici", "Yeni Alıcı", 120, "15x15x15", "Yeni ek bilgi");
+Usage
+LogNFTics.createShipment("Ankara", "Istanbul", "Sender", "Receiver", 100, "10x10x10", "Additional information");
+LogNFTics.updateShipmentStatus(1, "In Transit");
+LogNFTics.updateShipmentDetails(1, "New Sender", "New Receiver", 120, "15x15x15", "New additional information");
 LogNFTics.getShipment(1);
-LogNFTics.changeManager("0xYeniSahipAdres");
-
+LogNFTics.changeManager("0xNewOwnerAddress");
